@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Foo</title>
+		<link href="test.css" rel="stylesheet" type="text/css">
+		<link href="font-awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+		<!--[if lt IE 9]>
+			<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+		
+		<script type="text/javascript" src="js/scripts.js"></script>
+	</head>
+<body>
+	<div id="whole_hog">
+		<header>
+			<div id="logo">
+				<h1><a href="#"><img src="test_logo.svg" alt="logo name" /></a></h1>
+			</div>
+			
+			<div class="menuIcon">
+				<a href="#menuExpand"><span class="fa fa-bars"></span> Menu</a>
+			</div>
+			
+			<nav class="menu" id="navbar" role="navigation">
+				<a href="#" id="menu-icon"></a>
+				<ul class="site_menu">
+				
+					<li><a href="#">About</a></li>
+					<li><a href="#">Archive</a></li>
+					<li><a href="#">Store</a></li>
+					<li><a href="#">Extras</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+			</nav>
+			
+			<div class="smedia" id="smedia_links" role="social_media">
+				<ul>
+					<li><a class="social-icon" title="Facebook"><span class="fa fa-facebook"></span></a></li>
+					<li><a class="social-icon" title="Google +"><span class="fa fa-google-plus"></span></a></li>
+					<li><a class="social-icon" title="Twitter"><span class="fa fa-twitter"></span></a></li>
+					<li><a class="social-icon" title="RSS"><span class="fa fa-rss"></span></a></li>
+
+				</ul>
+			</div>
+
+			
+		</header>
+		<div class="clear"></div>
+		
+		<div class="banner">
+			<p>I'm a 728x90 ad banner! I convert to 468x60 in mobile! (NO idea if that's allowed or not...)</p>
+		</div>
+		
+		<div class="main_content_area">
+			
+			{% block content %}
+			<!-- this is a comic -->
+			<!-- for comics, this includes the right hand column -->
+			<div class="leftside">
+
+					<div class="barstuff titlebar"><p>January 1, 2016 - #150<span class="no_mobile"> - Comic title. I disappear in mobile.</span></p></div>
+					<div class="bordery" id="comic_holder"><div class="big-panel"><img src="comics/p1.jpg" width="800" /></div></div>
+					<div class="barstuff navbar" id="navbuts">
+						<nav class="navbuttons">
+							<ul>
+								<li class="back"><a href="#" title="First comic"><span class="fa fa-fast-backward"></span></a></li>
+								<li class="back"><a href="#" title="Previous comic"><span class="fa fa-backward"></span></a></li>
+								<li class="forward"><a href="#" title="Next comic"><span class="fa fa-forward"></span></a></li>
+								<li class="forward"><a href="#" title="Latest comic"><span class="fa fa-fast-forward"></span></a></li>
+							</ul>
+						</nav>
+					</div>
+				<div class="clear"></div>
+			</div>
+			
+			<!-- this is a banner - for some things -->
+			<div class="rightside">
+				<div class="little-box"><p>I'm a side banner!</p></div>
+				<div class="little-box"><p>I'm a side banner!</p></div>
+				<div class="little-box"><p>I'm a side banner!</p></div>
+				<div class="clear"></div>
+				<div class="banner-box"><p>I'm a 300x250 ad box!</p></div>
+			</div>
+			{% endblock content %}
+
+		</div>
+		
+		{% block index_news %}
+		<div class="clear"></div>
+
+		<!-- this is a news area -->
+		<div class="textbox">
+			<h2>THIS IS SO COOL</h2>
+			<p class="byline">Huzzah</p>
+			<p>HI THERE EVERYBODY</p>
+			<h3>Title</h3>
+			<p>Paragraph</p>
+			<p><a href="#">I am a link</a></p>
+			<hr />
+		</div>
+		{% endblock index_news %}
+		
+		<div class="clear"></div>
+		<footer>
+			Liz Walsh was here. Copyright 2015.
+		</footer>
+	
+	</div>
+</body>
+</html>

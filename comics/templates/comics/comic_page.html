@@ -1,0 +1,122 @@
+{% load staticfiles %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Foo</title>
+		<link href="{% static 'comics/test.css' %}" rel="stylesheet" type="text/css">
+		<link href="{% static 'comics/font-awesome-4.4.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="{% static 'comics/js/jquery-1.11.3.min.js' %}"></script>
+		<!--[if lt IE 9]>
+			<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+		
+		<script type="text/javascript" src="{% static 'comics/js/scripts.js' %}"></script>
+	</head>
+<body>
+	<div id="whole_hog">
+		<header>
+			<div id="logo">
+				<h1><a href="#"><img src="{% static 'comics/test_logo.svg' %}" alt="logo name" /></a></h1>
+			</div>
+			
+			<div class="menuIcon">
+				<a href="#menuExpand"><span class="fa fa-bars"></span> Menu</a>
+			</div>
+			
+			<nav class="menu" id="navbar" role="navigation">
+				<a href="#" id="menu-icon"></a>
+				<ul class="site_menu">
+				
+					<li><a href="#">About</a></li>
+					<li><a href="#">Archive</a></li>
+					<li><a href="#">Store</a></li>
+					<li><a href="#">Extras</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+			</nav>
+			
+			<div class="smedia" id="smedia_links" role="social_media">
+				<ul>
+					<li><a class="social-icon" title="Facebook"><span class="fa fa-facebook"></span></a></li>
+					<li><a class="social-icon" title="Google +"><span class="fa fa-google-plus"></span></a></li>
+					<li><a class="social-icon" title="Twitter"><span class="fa fa-twitter"></span></a></li>
+					<li><a class="social-icon" title="RSS"><span class="fa fa-rss"></span></a></li>
+
+				</ul>
+			</div>
+
+			
+		</header>
+		<div class="clear"></div>
+		
+		<div class="banner">
+			<p>I'm a 728x90 ad banner! I convert to 468x60 in mobile! (NO idea if that's allowed or not...)</p>
+		</div>
+		
+		<div class="main_content_area">
+			<div class="leftside">
+
+					<div class="barstuff titlebar"><p>{{comic.date}} - #{{comic.id}}<span class="no_mobile"> - {{comic.title}}</span></p></div>
+					<div class="bordery"><div class="big-panel"><img src="comics/p1.jpg" width="800" /></div></div>
+					<div class="barstuff navbar">
+						<nav class="navbuttons">
+							<ul>
+								{% if comic.id != 1 %}
+									<li class="back"><a href="{% url 'comics:page' 1  %}" title="First comic"><span class="fa fa-fast-backward"></span></a></li>
+								{% else %}
+									<li class="back"></li>
+								{% endif %}
+								{% if comic.prev != 0 %}
+									<li class="back"><a href="{% url 'comics:page' comic.prev %}" title="Previous comic"><span class="fa fa-backward"></span></a></li>
+								{% else %}
+									<li class="back"></li>
+								{% endif %}
+								{% if comic.next != 0 %}
+									<li class="forward"><a href="{% url 'comics:page' comic.next %}" title="Next comic"><span class="fa fa-forward"></span></a></li>
+								{% else %}
+									<li class="forward"></li>
+								{% endif %}
+								{% if comic.id != get_latest %}
+									<li class="forward"><a href="{% url 'comics:page' 1  %}" title="Latest comic"><span class="fa fa-fast-forward"></span></a></li>
+								{% else %}
+									<li class="forward"></li>
+								{% endif %}
+							</ul>
+						</nav>
+					</div>
+				<div class="clear"></div>
+			</div>
+			
+			
+			<div class="rightside">
+				<div class="little-box"><p>I'm a side banner!</p></div>
+				<div class="little-box"><p>I'm a side banner!</p></div>
+				<div class="little-box"><p>I'm a side banner!</p></div>
+				<div class="clear"></div>
+				<div class="banner-box"><p>I'm a 300x250 ad box!</p></div>
+			</div>
+
+		</div>
+		<!--<div class="banner">
+			<p>foo foo</p>
+		</div>
+
+
+		
+					
+
+
+		</div>-->
+		<div class="clear"></div>
+		<footer>
+			Liz Walsh was here. Copyright 2015.
+		</footer>
+	
+	</div>
+</body>
+</html>

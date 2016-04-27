@@ -1,0 +1,105 @@
+[
+{
+    "model": "comics.comic",
+    "pk": 1,
+    "fields": {
+        "date": "2016-03-11",
+        "title": "My first comic",
+        "slug": "my-first-comic",
+        "published": true,
+        "cid": 3,
+        "guest": false
+    }
+},
+{
+    "model": "comics.comic",
+    "pk": 2,
+    "fields": {
+        "date": "2016-03-07",
+        "title": "This is comic #2! Wohoo!",
+        "slug": "comic-2-wohoo",
+        "published": true,
+        "cid": 2,
+        "guest": false
+    }
+},
+{
+    "model": "comics.comic",
+    "pk": 3,
+    "fields": {
+        "date": "2016-02-28",
+        "title": "HI HI HI",
+        "slug": "hi-hi-hi",
+        "published": true,
+        "cid": 1,
+        "guest": false
+    }
+},
+{
+    "model": "comics.comic",
+    "pk": 4,
+    "fields": {
+        "date": "2016-03-03",
+        "title": "Guest comic coolness",
+        "slug": "guest-comic-coolness",
+        "published": true,
+        "cid": 0,
+        "guest": true
+    }
+},
+{
+    "model": "comics.comicfile",
+    "pk": 7,
+    "fields": {
+        "comic": 1,
+        "page": "comix/p1.jpg",
+        "alt_text": "Hi there"
+    }
+},
+{
+    "model": "comics.comicfile",
+    "pk": 8,
+    "fields": {
+        "comic": 2,
+        "page": "comix/p2.jpg",
+        "alt_text": "page 2"
+    }
+},
+{
+    "model": "comics.comicfile",
+    "pk": 9,
+    "fields": {
+        "comic": 2,
+        "page": "comix/p3.jpg",
+        "alt_text": "page 3"
+    }
+},
+{
+    "model": "comics.comicfile",
+    "pk": 10,
+    "fields": {
+        "comic": 3,
+        "page": "comix/p4.jpg",
+        "alt_text": "current goes yeah"
+    }
+},
+{
+    "model": "comics.comicfile",
+    "pk": 11,
+    "fields": {
+        "comic": 4,
+        "page": "comix/guest_comic.jpg",
+        "alt_text": "this is a cool ass guest comic by me! Me me me!"
+    }
+},
+{
+    "model": "comics.guestcomic",
+    "pk": 1,
+    "fields": {
+        "type": "guest",
+        "author": "Me me me",
+        "url": "http://google.com",
+        "ref_comic": 4
+    }
+}
+]

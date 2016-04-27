@@ -1,0 +1,632 @@
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { 
+    display: block;
+}
+
+body {
+	//max-width: 1200px;
+	max-width: 1900px;
+	margin: 0 auto;
+	font-family: "Helvetica", "Verdana", "Arial", sans-serif;
+	font-size: 100%;
+	color: #ffffff;
+	background-color: #1C1C43;
+	/*background-image: url("/static/comics/images/nick_bg.png"), url("/static/comics/images/bg_image_stuff.png");
+	background-repeat: no-repeat, repeat-x;
+	background-position: 352px 0px,  0px 0px;*/	
+	background-image: url("/static/comics/images/bg_image_stuff.png");
+	background-repeat: repeat-x;
+	background-position: 0px 0px;	
+	
+}
+
+#main_area {
+	position: relative;
+	top: 0;
+	min-width: 480px;
+	max-width: 1200px;
+	margin: 0 auto;
+	//overflow: auto;
+}
+
+#img_container {
+	max-width: 1900px;
+	background-image: url("/static/comics/images/nick_bg.png");
+	background-repeat: no-repeat;
+	background-position: 0px 120px;
+}
+
+
+a {
+	color: #4C9CF1;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+a:hover {
+	color: #444;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	display: inline-block;
+	width: auto\9; /*ie8*/
+}
+
+
+.clearfix:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+header {
+	width: 100%;
+	max-width: 1200px;
+	position: relative;
+    z-index: 999;
+	background: #1C1C43;
+}
+
+header h1 {
+	margin: 10px 10px 0px 0px;
+}
+
+
+header #logo {
+	float: left;
+	padding-top: 2px;
+	padding-left: 5px;
+	display: block;
+}
+
+header #logo img, header #logo object {
+	height: 100px;
+}
+
+header nav {
+	position: relative;
+    float: right;
+	padding: 20px;
+}
+
+header nav ul {
+	list-style: none;
+}
+
+.social-icon {
+	color: white;
+	font-size: x-large;
+}
+
+.small-social-icon {
+	color: white;
+}
+
+.social-icon:hover, .small-social-icon:hover {
+	color: white;
+	-moz-text-shadow: 0 0 10px red;
+	-webkit-text-shadow: 0 0 10px red;
+	text-shadow: 0 0 10px red;
+}
+
+.navbuttons a {
+	color: white;
+}
+
+header .smedia ul {
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	top: 10px;
+	right: 20px;
+}
+
+header .smedia ul li {
+	display: inline-block;
+	float: left;
+	list-style: none;
+	padding: 0 10px;
+	margin: 0;
+}
+
+/* beginning of menu stuff */
+header .menu ul {
+	padding: 0;
+	margin: 0;
+	position: relative;
+	top: 80px;
+}
+header .menu ul li {
+	display: inline-block;
+	float: left;
+	list-style: none;
+	padding: 0 20px;
+	margin: 0;
+}
+header .menuIcon {
+	display: none;
+	background: #000;
+	width: 100%;
+	text-align: center;
+}
+header .menuIcon:hover {
+	background: #999;
+}
+header .menuIcon a {
+	width: 100%;
+	display: inline-block;
+	color: #fff;
+}
+header .menuIcon a img {
+	vertical-align: middle;
+}
+/* end of menu stuff */
+
+#buttons {
+	width: auto;
+	max-width: 800px;
+	border-radius: 0 0 10px 10px;
+	background: green;
+	margin: 0;
+	height: 20px;
+}
+
+.navbuttons li {
+    display: inline-block;
+	width: 22%;
+	text-align: center;
+}
+
+/* float left */
+.fleft {
+	float: left;
+}
+
+/* float right */
+.fright {
+	float: right;
+}
+
+/* clear stuff */
+.clear {
+	clear: both;
+	margin: 0;
+	height: 0;
+	font-size: 0;
+	overflow: hidden;
+}
+
+
+
+.main_content_area {
+	position: relative;
+	//margin-top: 130px;
+	width: 100%;
+	z-index: 100;
+	min-height: 800px;
+}
+
+/* footer stuff */
+footer {
+	width: 100%;
+	max-width: 1200px;
+	position: relative;
+    z-index: 999;
+	background: #1C1C43;
+	margin: 20px;
+	font-size: small;
+}
+
+footer p {
+	padding-top: 0;
+}
+
+footer img {
+	margin-right: 20px;
+}
+
+footer ul li {
+	display: inline-block;
+	padding-right: 20px;
+}
+
+#comic_content {
+	max-width: 800px;
+}
+
+.banner {
+	position: relative;
+	
+	margin: 10px auto;
+	width: 728px;
+	height: 90px;
+	border: 1px solid white;
+	background: green;
+	color: red;
+	z-index: 2005;
+	
+}
+
+
+.leftside {
+	width: 100%;
+	max-width: 840px;
+	float: left;
+	display: block;
+	position: relative;
+}
+
+.bordery {
+	width: 100%;
+	max-width: 840px;
+	background-color: rgba(255, 255, 255, 0.3); /* opacity */
+	display: block;
+	float: left;
+	border-radius: 25px;
+}
+
+.leftside p {
+	margin: 10px 0 0 20px ;
+	padding: 0;
+}
+
+.barstuff {
+	background-color: rgba(255, 255, 255, 0.7);
+	line-height: 40px;
+	margin-left: 40px;
+	margin-right: 40px;
+}
+
+.barstuff, .sharebox {
+	width: calc(100% - 80px);
+	height: 40px;
+	max-width: 800px;
+}
+
+.titlebar {
+	margin-top: 0px;
+	border-radius: 50px 50px 0 0;
+}
+
+.navbar {
+	border-radius: 0 0 50px 50px;
+	margin-top: -16px;
+}
+
+
+.titlebar p, .navbar p {
+	margin-left: 40px;
+	margin-right: 40px;
+	vertical-align: middle;
+}
+
+#rcont {
+	width: 100%;
+	height: 100%;
+}
+.rightside {
+	width: 100%;
+	position: relative;
+	top: 40px;
+	max-width: 320px;
+	float: right;
+	display: block;
+}
+
+.big-panel {
+	width: 100%;
+	max-width: 800px;
+	/* technically this will scale with the image */
+	margin: 20px;
+	z-index: 100;
+	display: inline-block;
+}
+
+.banner-box {
+	position: relative;
+	width: 300px;
+	height: 250px;
+	margin: 10px;
+	background: black;
+	border: 1px solid white;
+}
+.little-box {
+	position: relative;
+	width: 250px;
+	height: 100px;
+	margin: 10px auto;
+	background: black;
+	border: 1px solid white;
+}
+
+
+
+/* anything for a text box */
+/* covers news box, cast page, about section */
+.textbox {
+	width: auto;
+	background: white;
+	border: 1px solid black;
+	border-radius: 50px;
+	margin-top: 10px;
+	font-family: "Helvetica", "Verdana", "Arial", sans-serif;
+	font-size: 100%;
+	color: black;
+	padding: 20px 40px;
+}
+
+.textbox p {
+	font-size: medium;
+}
+
+.textbox .byline {
+	margin-top: 0px;
+	font-size: small;
+}
+
+.textbox h2 {
+	margin-bottom: 0;
+}
+
+.textbox h3 {
+	font-size: medium;
+}
+
+.textbox a {
+	color: #324fe1;
+	font-weight: normal;
+	text-decoration: underline;
+}
+
+.textbox a:hover {
+	color: #444;
+}
+
+.textbox a:visited {
+	color: #6e329d;
+}
+
+
+.textbox article {
+	padding: 5px 0 5px 20px;
+}
+
+.cast-left {
+	float: left;	
+}
+
+.cast-right {
+	overflow: hidden;
+}
+
+/* share buttons */
+.sharebox {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+ul.share-buttons{
+	list-style: none;
+	position: relative;
+	text-align: center;
+	padding-left:0;
+}
+
+ul.share-buttons li{
+	display: inline-block;
+}
+
+ul.share-buttons a {
+	color: white;
+}
+
+#hide {
+	display: none;
+}
+
+hr {
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Do a barrel roll! */
+.barrel_roll {
+    -webkit-transition: -webkit-transform 4s ease;
+    -webkit-transform: rotate(360deg);
+    -moz-transition: -moz-transform 4s ease;
+    -moz-transform: rotate(360deg);
+    -o-transition: -o-transform 4s ease;
+    -o-transform: rotate(360deg);
+    transition: transform 4s ease;
+    transform: rotate(360deg);
+}  
+
+/* Media Queries */
+
+@media screen and (max-width: 1192px) {
+	body {
+		background-image: url("../images/bg_image_stuff.png");
+		background-repeat: repeat-x;
+		background-position: fixed;
+	}
+	
+	#funky {
+		background-image: none;
+		background-repeat: none;
+		background-position: none;
+	}
+	
+	header {
+		max-width: 1192px;
+	}
+	.big-panel {
+		width: calc(100% - 40px);
+		height: calc(100% - 40px);
+		height: auto;
+	}
+	.leftside {
+		width: full;
+		height: auto;
+		
+	}
+	.rightside {
+		position: static;
+		float: left;
+		width: 100%;
+		max-width: 840px;
+	}
+	.little-box {
+		float: left;
+		margin: 10px;
+		display: inline-block;
+		width: 225px;
+		height: 90px;
+	}
+	.banner-box {
+		float: none;
+		display: block;
+		margin: 10px auto;
+	}
+	header .menu ul li {
+		padding: 0 10px;
+	}
+}
+@media only screen and (max-width: 776px) {
+	.main_content_area {
+		width: 100%;
+	}
+	.little-box {
+		width: 175px;
+		height: 70px;
+	}
+	.leftside {
+		width: auto;
+		max-width: auto;
+		margin: 0;
+	}
+	.bordery {
+		border-radius: 0;
+		width: auto;
+		height: auto;
+		max-width: auto;
+		margin: 0;
+		display: inline-block;
+		line-height: 0;
+	}
+	.big-panel {
+		margin: 0;	
+		width: auto;
+		height: auto;
+	}
+	.barstuff, .sharebox {
+		width: calc(100% - 40px);
+		margin-left: 20px;
+		margin-right: 20px;
+	}
+	.barstuff.navbar {
+		line-height: 40px;
+	}
+	header #logo img, header #logo object {
+		height: 70px;
+	} 
+	header .menu {
+		max-height: 0;
+		overflow: hidden;
+		float: none;
+		text-align: center;
+		width: 100%;
+		-webkit-transition: max-height 0.5s;
+		-moz-transition: max-height 0.5s;
+		transition: max-height 0.5s;
+	}
+	header .menu ul {
+		top: 0;
+	}
+	header nav {
+		float: none;
+		padding: 0;
+	}
+	header .menu.menuOpen {
+		max-height: 1000px;
+		-webkit-transition: max-height 0.5s;
+		-moz-transition: max-height 0.5s;
+		transition: max-height 0.5s;
+	}
+	header .menu ul li {
+		display: block;
+		width: 100%;
+		background: #000;
+		border-top: 1px solid #4d4d4d;
+		padding: 0 0 0 5px;
+	}
+	header .menu ul li:hover {
+		background: #999;
+	}
+	header .menu ul li a {
+		color: #fff;
+		text-shadow: #848484 0px 1px 2px;
+		padding: 10px 0;
+		width: 100%;
+		display: inline-block;
+		
+	}
+	header .menuIcon {
+		display: inline-block;
+		text-align: center;
+		width: 100%;
+	}
+	header .menuIcon a { 
+		width: 100%; 
+		display: inline-block; 
+		font-size: 1.125em; 
+		padding: 15px 0; 
+		line-height: 1.125em; 
+		color: #fff; 
+	}
+	.no_mobile {
+		display: none;
+	}
+	.banner {
+		width: 468px;
+		height: 60px;
+	}
+  
+}
+@media screen and (max-width: 640px) {
+	.rightside {
+		display: block;
+	}
+	
+	
+	/*.little-box, .banner-box {
+		float: none;
+		display: block;
+		margin: 10px auto;
+	}*/
+	
+	.banner-box {
+		float: none;
+		display: block;
+		margin: 10px auto;
+	}
+	
+	.little-box {
+		width: 125px;
+		height: 50px;
+	}
+}
+@media only screen and (max-width: 480px) {
+	.banner {
+		//left: 5px;
+		//top: 130px;
+		width: 468px;
+		height: 60px;
+		//margin: 20px 10px;
+	}
+}
+
+
