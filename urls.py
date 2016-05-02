@@ -5,4 +5,5 @@ urlpatterns = [
     url(r'^comics/', include('comics.urls')),
     url(r'^admin/' admin.site.urls),
     url(r'^news/', include('news.urls')),
+    url(r'^archive/', include('archive.urls', namespace="archive")),
 ]

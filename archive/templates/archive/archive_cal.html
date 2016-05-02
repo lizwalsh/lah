@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block metadata %}
+		<link rel="canonical" href="http://www.lifesahowl.com/" />
+		<meta name="description" content="An epic urban fantasy webcomic about life, love and lycanthropy." />
+		
+		<meta property="og:title" content="Life's a Howl - a werewolf comic by Liz Walsh" />
+		<meta property="og:type" content="website" />
+		<meta property="og:image" content="" />
+		<meta property="og:url" content="http://www.lifesahowl.com/" />
+		<meta property="og:description" content="An epic urban fantasy webcomic about life, love and lycanthropy." />
+		<meta property="og:locale" content="language_en_US" />
+		
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:url" content="http://www.lifesahowl.com/" />
+		<meta name="twitter:title" content="Life's a Howl - a werewolf comic by Liz Walsh" />
+		<meta name="twitter:description" content="An epic urban fantasy webcomic about life, love and lycanthropy." />
+		<meta name="twitter:image" content="" />
+		<meta name="twitter:site" content="@lifesahowl" />
+
+{% endblock metadata %}
+
+{% block title %}
+Life's a Howl - Archive
+{% endblock title %}
+
+{% block content %}
+
+	<div class="leftside">
+		<div class="textbox">
+			<h2>Archive</h2>
+				<table width="100%">
+					<tr>
+					<td width="20%" align="left">
+						{% if PreviousYear != '0' %}
+							&lt;&lt; <a href="{% url 'archive:cally' PreviousYear PreviousMonth %}">{{PreviousMonthName}} {{PreviousYear}}</a>
+						{% endif %}
+					</td>
+					<td width="20%" align="center"><a href="{% url 'archive:cally' %}">Today</a></td>
+					<td width="20%" align="right">
+						{% if NextYear != '0' %}
+							<a href="{% url 'archive:cally' NextYear NextMonth %}">{{NextMonthName}} {{NextYear}}</a> &gt;&gt;
+						{% endif %}
+					</td>
+					</tr>
+				</table>
+				<div id="calendar">
+				  {{Calendar}}
+				</div>
+		</div>
+	</div>
+		{% include "right_column.html" %}
+{% endblock content %}
+
+

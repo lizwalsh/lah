@@ -21,6 +21,10 @@ class Comic(models.Model):
     def __str__(self):
         return "Comic " + str(self.cid) + " - " + self.title + " - " + str(self.date)
     
+    # get URL for comic
+    def get_url(self):
+        return '/' + str(self.id) + '/' + self.slug
+    
     def was_published_recently(self):
         now = timezone.now()
         return now - datetime.timedelta(days=1) <= self.date <= now
@@ -209,4 +213,6 @@ class GuestComic(models.Model):
     url = models.CharField(max_length=200, blank=True)
     ref_comic = models.OneToOneField(Comic, related_name='gcomic', on_delete=models.CASCADE)
     
+    
+
     
