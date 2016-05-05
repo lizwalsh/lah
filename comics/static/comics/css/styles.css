@@ -2,6 +2,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     display: block;
 }
 
+@font-face {
+	font-family: Sequel;
+	src: url(Sequel-Regular.ttf)
+}
+
 body {
 	//max-width: 1200px;
 	max-width: 1900px;
@@ -35,6 +40,9 @@ body {
 	background-position: 0px 120px;
 }
 
+.fancy {
+	font-family: Sequel, sans-serif;
+}
 
 a {
 	color: #4C9CF1;
@@ -538,7 +546,7 @@ hr {
 		padding: 0 10px;
 	}
 }
-@media only screen and (max-width: 776px) {
+@media only screen and (max-width: 768px) {
 	.main_content_area {
 		width: 100%;
 	}

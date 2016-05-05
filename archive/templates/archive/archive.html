@@ -31,6 +31,7 @@ Life's a Howl - Archive
 	<div class="leftside">
 		<div class="textbox">
 			<h2>Archive</h2>
+			<p><a href="{% url 'archive:cally' %}">Switch to calendar view</a></p>
 			{% for item in arc %}
 				{% if item.booknum == 0 %}
 				<h3>{{ item.title }}</h3>
