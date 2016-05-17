@@ -135,6 +135,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#STATIC_ROOT = '/home/litazia/lah/static/'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     #os.path.join(BASE_DIR, 'static')
@@ -148,6 +149,7 @@ STATICFILES_FINDERS = (
 
 # Media files (uploads)
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+#MEDIA_ROOT = '/home/litazia/lah/media/'
 MEDIA_URL = '/media/'
 
 # define some variables for myself
@@ -155,13 +157,16 @@ SITE_URL = 'http://www.lifesahowl.com/'
 
 
 # comics folder
+#COMICS_ROOT = os.path.join(MEDIA_ROOT, '/comix')
 COMICS_ROOT = os.path.join(BASE_DIR, 'media/comix')
 COMICS_URL = '/media/comix/'
 COMICS_F = 'comix'
 
+#UPLOAD_ROOT = os.path.join(MEDIA_ROOT, '/uploads')
 UPLOAD_ROOT = os.path.join(BASE_DIR, 'media/uploads')
 UPLOAD_F = 'uploads'
 
+#PREVIEW_ROOT = os.path.join(BASE_DIR, '/preview')
 PREVIEW_ROOT = os.path.join(BASE_DIR, 'media/preview')
 PREVIEW_URL = '/media/preview/'
 

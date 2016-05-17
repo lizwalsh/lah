@@ -30,23 +30,29 @@ Life's a Howl - Cast page
 
 	<div class="leftside">
 		<div class="textbox">
-			<h2>{{ intro.title }}</h2>
-			<p>{{ intro.text }}</p>
+			{% if intro %}
+				<h2>{{ intro.title }}</h2>
+				<p>{{ intro.text }}</p>
+				
+				<hr />
+			{% endif %}
 			
-			<hr />
+		
 			<!-- now let's work on our cast page -->
-			{% for person in cast_page %}
-			<div class="cast-left">
-				<img src="{{ MEDIA_URL }}{{ person.picture.name }}" />
-			</div>
-			<div class="cast-right">
-				<h3>{{ person.title }}</h3>
-				<p>{{ person.text }}</p>
-			</div>
-			<div class="clear"></div>
-			<hr />
-			
-			{% endfor %}
+			{% if cast_page %} 
+				{% for person in cast_page %}
+				<div class="cast-left">
+					<img src="{{ MEDIA_URL }}{{ person.picture.name }}" />
+				</div>
+				<div class="cast-right">
+					<h3>{{ person.title }}</h3>
+					<p>{{ person.text }}</p>
+				</div>
+				<div class="clear"></div>
+				<hr />
+				
+				{% endfor %}
+			{% endif %}
 		</div>
 	</div>
 		{% include "right_column.html" %}

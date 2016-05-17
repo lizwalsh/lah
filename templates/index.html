@@ -29,59 +29,61 @@ Life's a Howl - a comic about werewolves by Liz Walsh
 
 {% block content %}
 				<div class="leftside">
-					<div class="barstuff titlebar"><p>{{comic.date}} - {% if comic.guest %}{{comic.gcomic.get_type_display}}{% else %}#{{comic.cid}}{% endif %}<span class="no_mobile"> - {{comic.title}}</span></p></div>
-					<div class="bordery" id="comic_holder"><div class="big-panel">
-						{% for image in comic.comicfile_set.all %}
-							<img src="{{ MEDIA_URL }}{{ image.page.name }}" width="800" />
-						{% endfor %}
-					</div></div>
-					<div class="barstuff navbar" id="navbuts">
-						<nav class="navbuttons">
-							<ul>
-								{# first link #}
-								{% if comic.get_first %}
-									<li class="back"><a href="{% url 'comics:page' comic.get_first.id comic.get_first.slug %}" title="First comic"><span class="fa fa-fast-backward"></span></a></li>
-								{% else %}
-									<li class="back"></li>
-								{% endif %}
-								
-								{# previous link #}
-								{% if comic.get_prev %}
-									<li class="back"><a href="{% url 'comics:page' comic.get_prev.id comic.get_prev.slug %}" title="Previous comic"><span class="fa fa-backward"></span></a></li>
-								{% else %}
-									<li class="back"></li>
-								{% endif %}
-								
-								{# next link #}
-								{% if comic.get_next %}
-									{% if comic.get_next.id == comic.get_latest.id %}
-									<li class="forward"><a href="{% url 'comics:index' %}" title="Next comic"><span class="fa fa-forward"></span></a></li>
+					{% if comic %}
+						<div class="barstuff titlebar"><p>{{comic.date}} - {% if comic.guest %}{{comic.gcomic.get_type_display}}{% else %}#{{comic.cid}}{% endif %}<span class="no_mobile"> - {{comic.title}}</span></p></div>
+						<div class="bordery" id="comic_holder"><div class="big-panel">
+							{% for image in comic.comicfile_set.all %}
+								<img src="{{ MEDIA_URL }}{{ image.page.name }}" width="800" />
+							{% endfor %}
+						</div></div>
+						<div class="barstuff navbar" id="navbuts">
+							<nav class="navbuttons">
+								<ul>
+									{# first link #}
+									{% if comic.get_first %}
+										<li class="back"><a href="{% url 'comics:page' comic.get_first.id comic.get_first.slug %}" title="First comic"><span class="fa fa-fast-backward"></span></a></li>
 									{% else %}
-									<li class="forward"><a href="{% url 'comics:page' comic.get_next.id comic.get_next.slug %}" title="Next comic"><span class="fa fa-forward"></span></a></li>
+										<li class="back"></li>
 									{% endif %}
-								{% else %}
-									<li class="forward"></li>
-								{% endif %}
-								
-								{# latest link #}
-								{% if comic.get_latest %}
-									<li class="forward"><a href="{% url 'comics:index'  %}" title="Latest comic"><span class="fa fa-fast-forward"></span></a></li>
-								{% else %}
-									<li class="forward"></li>
-								{% endif %}
+									
+									{# previous link #}
+									{% if comic.get_prev %}
+										<li class="back"><a href="{% url 'comics:page' comic.get_prev.id comic.get_prev.slug %}" title="Previous comic"><span class="fa fa-backward"></span></a></li>
+									{% else %}
+										<li class="back"></li>
+									{% endif %}
+									
+									{# next link #}
+									{% if comic.get_next %}
+										{% if comic.get_next.id == comic.get_latest.id %}
+										<li class="forward"><a href="{% url 'comics:index' %}" title="Next comic"><span class="fa fa-forward"></span></a></li>
+										{% else %}
+										<li class="forward"><a href="{% url 'comics:page' comic.get_next.id comic.get_next.slug %}" title="Next comic"><span class="fa fa-forward"></span></a></li>
+										{% endif %}
+									{% else %}
+										<li class="forward"></li>
+									{% endif %}
+									
+									{# latest link #}
+									{% if comic.get_latest %}
+										<li class="forward"><a href="{% url 'comics:index'  %}" title="Latest comic"><span class="fa fa-fast-forward"></span></a></li>
+									{% else %}
+										<li class="forward"></li>
+									{% endif %}
+								</ul>
+							</nav>
+						</div>
+						<div class="sharebox">
+							
+							<ul class="share-buttons">
+								<!-- AddToAny BEGIN -->
+								<li><a class="a2a_dd" href="https://www.addtoany.com/share"><img src="{% static 'comics/images/link_share.png' %}" alt="Share this comic!" title="Share this comic!" /></a></li>
+								<script async src="https://static.addtoany.com/menu/page.js"></script>
+								<!-- AddToAny END -->
 							</ul>
-						</nav>
-					</div>
-					<div class="sharebox">
-						
-						<ul class="share-buttons">
-							<!-- AddToAny BEGIN -->
-							<li><a class="a2a_dd" href="https://www.addtoany.com/share"><img src="{% static 'comics/images/link_share.png' %}" alt="Share this comic!" title="Share this comic!" /></a></li>
-							<script async src="https://static.addtoany.com/menu/page.js"></script>
-							<!-- AddToAny END -->
-						</ul>
-
-					</div>	
+	
+						</div>	
+					{% endif %}
 				<div class="clear"></div>
 			</div>
 			
@@ -93,17 +95,19 @@ Life's a Howl - a comic about werewolves by Liz Walsh
 <div class="textbox">
 	<h1>News</h1>
 	<!-- now let's do some processing -->
-	{% for stuff in news %}
-	<article>
-		<h2>{{stuff.title}}</h2>
-		<p class="byline">{{stuff.date}}</p>
-		<div class="news_body">
-		{{stuff.news|safe}}
-		</div>
-	</article>
-	
-	<hr />
-	{% endfor %}
+	{% if news %}
+		{% for stuff in news %}
+		<article>
+			<h2>{{stuff.title}}</h2>
+			<p class="byline">{{stuff.date}}</p>
+			<div class="news_body">
+			{{stuff.news|safe}}
+			</div>
+		</article>
+		
+		<hr />
+		{% endfor %}
+	{% endif %}
 	
 </div>
 

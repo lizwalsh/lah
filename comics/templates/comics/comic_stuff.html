@@ -29,72 +29,74 @@ Life's a Howl - {{comic.date}} - #{{comic.id}} - {{comic.title}}
 
 {% block content %}
 				<div class="leftside">
-					<div class="barstuff titlebar"><p>{{comic.date}} - {% if comic.guest %}{{comic.gcomic.get_type_display}}{% else %}#{{comic.cid}}{% endif %}<span class="no_mobile"> - {{comic.title}}</span></p></div>
-					<div class="bordery" id="comic_holder">
-						<div class="big-panel">
-							{% for image in comic.comicfile_set.all %}
-								<img src="{{ MEDIA_URL }}{{ image.page.name }}" width="800" />
-							{% endfor %}
+					{% if comic %}
+						<div class="barstuff titlebar"><p>{{comic.date}} - {% if comic.guest %}{{comic.gcomic.get_type_display}}{% else %}#{{comic.cid}}{% endif %}<span class="no_mobile"> - {{comic.title}}</span></p></div>
+						<div class="bordery" id="comic_holder">
+							<div class="big-panel">
+								{% for image in comic.comicfile_set.all %}
+									<img src="{{ MEDIA_URL }}{{ image.page.name }}" width="800" />
+								{% endfor %}
+							</div>
 						</div>
-					</div>
-					<div class="clear"></div>
-					<div class="barstuff navbar">
-					<!--div class="barstuff navbar" id="navbuts"-->
-						<nav class="navbuttons">
-							<ul>
-								{# first link #}
-								{% if comic.get_first %}
-									<li class="back"><a href="{% url 'comics:page' comic.get_first.id comic.get_first.slug %}" title="First comic"><span class="fa fa-fast-backward"></span></a></li>
-								{% else %}
-									<li class="back"></li>
-								{% endif %}
-								
-								{# previous link #}
-								{% if comic.get_prev %}
-									<li class="back"><a href="{% url 'comics:page' comic.get_prev.id comic.get_prev.slug %}" title="Previous comic"><span class="fa fa-backward"></span></a></li>
-								{% else %}
-									<li class="back"></li>
-								{% endif %}
-								
-								{# next link #}
-								{% if comic.get_next %}
-									{% if comic.get_next.id == comic.get_latest.id %}
-									<li class="forward"><a href="{% url 'comics:index' %}" title="Next comic"><span class="fa fa-forward"></span></a></li>
+						<div class="clear"></div>
+						<div class="barstuff navbar">
+						<!--div class="barstuff navbar" id="navbuts"-->
+							<nav class="navbuttons">
+								<ul>
+									{# first link #}
+									{% if comic.get_first %}
+										<li class="back"><a href="{% url 'comics:page' comic.get_first.id comic.get_first.slug %}" title="First comic"><span class="fa fa-fast-backward"></span></a></li>
 									{% else %}
-									<li class="forward"><a href="{% url 'comics:page' comic.get_next.id comic.get_next.slug %}" title="Next comic"><span class="fa fa-forward"></span></a></li>
+										<li class="back"></li>
 									{% endif %}
-								{% else %}
-									<li class="forward"></li>
-								{% endif %}
-								
-								{# latest link #}
-								{% if comic.get_latest %}
-									<li class="forward"><a href="{% url 'comics:index'  %}" title="Latest comic"><span class="fa fa-fast-forward"></span></a></li>
-								{% else %}
-									<li class="forward"></li>
-								{% endif %}
+									
+									{# previous link #}
+									{% if comic.get_prev %}
+										<li class="back"><a href="{% url 'comics:page' comic.get_prev.id comic.get_prev.slug %}" title="Previous comic"><span class="fa fa-backward"></span></a></li>
+									{% else %}
+										<li class="back"></li>
+									{% endif %}
+									
+									{# next link #}
+									{% if comic.get_next %}
+										{% if comic.get_next.id == comic.get_latest.id %}
+										<li class="forward"><a href="{% url 'comics:index' %}" title="Next comic"><span class="fa fa-forward"></span></a></li>
+										{% else %}
+										<li class="forward"><a href="{% url 'comics:page' comic.get_next.id comic.get_next.slug %}" title="Next comic"><span class="fa fa-forward"></span></a></li>
+										{% endif %}
+									{% else %}
+										<li class="forward"></li>
+									{% endif %}
+									
+									{# latest link #}
+									{% if comic.get_latest %}
+										<li class="forward"><a href="{% url 'comics:index'  %}" title="Latest comic"><span class="fa fa-fast-forward"></span></a></li>
+									{% else %}
+										<li class="forward"></li>
+									{% endif %}
+								</ul>
+							</nav>
+						</div>
+						<div class="sharebox">
+							
+							<ul class="share-buttons">
+								<!-- AddToAny BEGIN -->
+								<li><a class="a2a_dd" href="https://www.addtoany.com/share"><img src="{% static 'comics/images/link_share.png' %}" alt="Share this comic!" title="Share this comic!" /></a></li>
+								<script async src="https://static.addtoany.com/menu/page.js"></script>
+								<!-- AddToAny END -->
+								<!--<li><img src="{% static 'comics/link_share.png' %}" alt="Share this comic!" title="Share this comic!" /></li>
+								<li><a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}&t=Life%27s%20a%20Howl:%20{{ comic.title }}" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+								<li><a href="https://twitter.com/intent/tweet?source={{ request.build_absolute_uri }}&text={{ comic.title }}:%20{{ request.build_absolute_uri }}&via=lifesahowl" target="_blank" title="Tweet"><i class="fa fa-twitter-square fa-2x"></i></a></li>
+								<li><a href="https://plus.google.com/share?url={{ request.build_absolute_uri }}" target="_blank" title="Share on Google+"><i class="fa fa-google-plus-square fa-2x"></i></a></li>-->
 							</ul>
-						</nav>
-					</div>
-					<div class="sharebox">
-						
-						<ul class="share-buttons">
-							<!-- AddToAny BEGIN -->
-							<li><a class="a2a_dd" href="https://www.addtoany.com/share"><img src="{% static 'comics/images/link_share.png' %}" alt="Share this comic!" title="Share this comic!" /></a></li>
-							<script async src="https://static.addtoany.com/menu/page.js"></script>
-							<!-- AddToAny END -->
-							<!--<li><img src="{% static 'comics/link_share.png' %}" alt="Share this comic!" title="Share this comic!" /></li>
-							<li><a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}&t=Life%27s%20a%20Howl:%20{{ comic.title }}" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-2x"></i></a></li>
-							<li><a href="https://twitter.com/intent/tweet?source={{ request.build_absolute_uri }}&text={{ comic.title }}:%20{{ request.build_absolute_uri }}&via=lifesahowl" target="_blank" title="Tweet"><i class="fa fa-twitter-square fa-2x"></i></a></li>
-							<li><a href="https://plus.google.com/share?url={{ request.build_absolute_uri }}" target="_blank" title="Share on Google+"><i class="fa fa-google-plus-square fa-2x"></i></a></li>-->
-						</ul>
-						<!--Share! <a class="tumblr-share-button" data-color="blue" data-notes="none" href="https://embed.tumblr.com/share"></a>
-						<a href="https://twitter.com/share" class="twitter-share-button" data-via="lifesahowl">Tweet</a>
-						<div style="padding: -5px 0 0;" class="fb-share-button" data-layout="button" data-title="{{ comic.title }}"></div>
-						<div class="g-plus" data-action="share" data-annotation="none"></div>-->
-						
-						
-					</div>	
+							<!--Share! <a class="tumblr-share-button" data-color="blue" data-notes="none" href="https://embed.tumblr.com/share"></a>
+							<a href="https://twitter.com/share" class="twitter-share-button" data-via="lifesahowl">Tweet</a>
+							<div style="padding: -5px 0 0;" class="fb-share-button" data-layout="button" data-title="{{ comic.title }}"></div>
+							<div class="g-plus" data-action="share" data-annotation="none"></div>-->
+							
+							
+						</div>	
+					{% endif %}
 				<div class="clear"></div>
 				</div>
 			
