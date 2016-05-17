@@ -1,23 +1,24 @@
+html {
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important;
+}
+
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { 
     display: block;
 }
 
 @font-face {
 	font-family: Sequel;
-	src: url(Sequel-Regular.ttf)
+	src: url('Sequel-Regular.eot?') format('eot'), url('Sequel-Regular.woff') format('woff') url(Sequel-Regular.ttf) format('truetype');
 }
 
 body {
-	//max-width: 1200px;
 	max-width: 1900px;
 	margin: 0 auto;
 	font-family: "Helvetica", "Verdana", "Arial", sans-serif;
 	font-size: 100%;
 	color: #ffffff;
 	background-color: #1C1C43;
-	/*background-image: url("/static/comics/images/nick_bg.png"), url("/static/comics/images/bg_image_stuff.png");
-	background-repeat: no-repeat, repeat-x;
-	background-position: 352px 0px,  0px 0px;*/	
 	background-image: url("/static/comics/images/bg_image_stuff.png");
 	background-repeat: repeat-x;
 	background-position: 0px 0px;	
@@ -30,14 +31,13 @@ body {
 	min-width: 480px;
 	max-width: 1200px;
 	margin: 0 auto;
-	//overflow: auto;
 }
 
 #img_container {
 	max-width: 1900px;
 	background-image: url("/static/comics/images/nick_bg.png");
 	background-repeat: no-repeat;
-	background-position: 0px 120px;
+	background-position: 0px 137px;
 }
 
 .fancy {
@@ -205,11 +205,8 @@ header .menuIcon a img {
 	overflow: hidden;
 }
 
-
-
 .main_content_area {
 	position: relative;
-	//margin-top: 130px;
 	width: 100%;
 	z-index: 100;
 	min-height: 800px;
@@ -245,7 +242,6 @@ footer ul li {
 
 .banner {
 	position: relative;
-	
 	margin: 10px auto;
 	width: 728px;
 	height: 90px;
@@ -371,6 +367,11 @@ footer ul li {
 .textbox .byline {
 	margin-top: 0px;
 	font-size: small;
+}
+
+.textbox .title {
+	font-family: "Sequel", sans-serif;
+	
 }
 
 .textbox h2 {
