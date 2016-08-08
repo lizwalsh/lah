@@ -19,7 +19,11 @@ class Comic(models.Model):
     guest = models.BooleanField('Is guest/special comic', default=False)
     
     def __str__(self):
-        return "Comic " + str(self.cid) + " - " + self.title + " - " + str(self.date)
+        if self.guest == False:
+            return "Comic " + str(self.cid) + " - " + self.title + " - " + str(self.date)
+        else:
+            return str(self.gcomic) + " - " + self.title + " - " + str(self.date)
+            # different types of "guest" comics               
     
     # get URL for comic
     def get_url(self):
@@ -214,5 +218,8 @@ class GuestComic(models.Model):
     ref_comic = models.OneToOneField(Comic, related_name='gcomic', on_delete=models.CASCADE)
     
     
-
+    def __str__(self):
+        #return '{} by {}'.format(self.ctype(), self.author)
+        return self.get_type_display() + ' by ' + self.author
+    
     

@@ -25,7 +25,7 @@ from lah.feeds import RecentUpdates
 
 urlpatterns = [
     url(r'^comics/', include('comics.urls')),
-    #url(r'^news/', include('news.urls')),
+    url(r'^news/', include('news.urls')),
     url(r'^cast/', include('cast.urls')),
     url(r'^about/', include('about.urls')),
     url(r'^archive/', include('archive.urls')),

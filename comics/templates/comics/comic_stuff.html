@@ -9,7 +9,7 @@
 		
 		<meta property="og:title" content="Life's a Howl - {{comic.date}} - #{{comic.cid}} - {{comic.title}}" />
 		<meta property="og:type" content="website" />
-		<meta property="og:image" content="" />
+		<meta property="og:image" content="{% static 'comics/favicon/favicon-180.png' %}" />
 		<meta property="og:url" content="{{ request.build_absolute_uri }}" />
 		<meta property="og:description" content="Update for {{comic.date}} - Comic #{{comic.cid}} - {{comic.title}}" />
 		<meta property="og:locale" content="language_en_US" />
@@ -18,7 +18,7 @@
 		<meta name="twitter:url" content="{{ request.build_absolute_uri }}" />
 		<meta name="twitter:title" content="Life's a Howl - {{comic.date}} - #{{comic.cid}} - {{comic.title}}" />
 		<meta name="twitter:description" content="Update for {{comic.date}} - Comic #{{comic.cid}} - {{comic.title}}" />
-		<meta name="twitter:image" content="" />
+		<meta name="twitter:image" content="{% static 'comics/favicon/favicon-180.png' %}" />
 		<meta name="twitter:site" content="@lifesahowl" />
 
 {% endblock metadata %}

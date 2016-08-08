@@ -4,6 +4,7 @@ from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.views import generic
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import datetime
 
 from django.utils import timezone
@@ -19,7 +20,19 @@ class IndexView(generic.ListView):
     
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
-        context["news"] = NewsItem.objects.filter(published=True).order_by('-date')[:3]
+        #context["news"] = NewsItem.objects.filter(published=True).order_by('-date')[:3]
+        foo = NewsItem.objects.filter(published=True).order_by('-date')
+        paginator = Paginator(foo, 3)
+        
+        page = self.request.GET.get('page')
+        try:
+            news = paginator.page(page)
+        except PageNotAnInteger:
+            news = paginator.page(1)
+        except EmptyPage:
+            news = paginator.page(paginator.num_pages)
+        
+        context["news"] = news
         return context
     
     def get_queryset(self):

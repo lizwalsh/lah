@@ -6,7 +6,7 @@ from datetime import date
 from itertools import groupby
 from django.utils.html import conditional_escape as esc
 
-from comics.models import Comic
+from comics.models import Comic, GuestComic
 
 class Archive(models.Model):
     start_id = models.ForeignKey(Comic, related_name='Starting comic+')

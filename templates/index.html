@@ -103,10 +103,14 @@ Life's a Howl - a comic about werewolves by Liz Walsh
 			<div class="news_body">
 			{{stuff.news|safe}}
 			</div>
+			<!--<p>Traceback: </p>-->
 		</article>
 		
 		<hr />
 		{% endfor %}
+		{% if news.has_next %}
+			<p><a href="/news/?page={{ news.next_page_number }}">Older news...</a></p>
+		{% endif %}
 	{% endif %}
 	
 </div>

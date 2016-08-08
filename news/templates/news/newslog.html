@@ -30,13 +30,22 @@ Life's a Howl - News page
 
 	<div class="leftside">
 		<div class="textbox">
+		{% for stuff in news %}
 			<article>
-				<h2>{{news.title}}</h2>
-				<p class="byline">{{news.date}}</p>
+				<h2>{{stuff.title}}</h2>
+				<p class="byline">{{stuff.date}}</p>
 				<div class="news_body">
-				{{news.news|safe}}
+				{{stuff.news|safe}}
 				</div>
+				<p>Traceback: <a href="{% url 'news:page' stuff.id stuff.slug %}">booyah</a> </p>
 			</article>
+		{% endfor %}
+		{% if page_obj.has_previous %}
+			<p><a href="?page={{ page_obj.previous_page_number }}">More recent news...</a></p>
+		{% endif %}
+		{% if page_obj.has_next %}
+			<p><a href="?page={{ page_obj.next_page_number }}">Older news...</a></p>
+		{% endif %}	
 		</div>
 		
 	</div>
