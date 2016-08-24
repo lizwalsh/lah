@@ -34,14 +34,18 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'lah',
     'ckeditor',
+    'photologue',
+    'sortedm2m',
     'twython_django_oauth',
     'comics.apps.ComicsConfig',
     'cast.apps.CastConfig',
     'news.apps.NewsConfig',
     'archive.apps.ArchiveConfig',
     'about.apps.AboutConfig',
+    'extras.apps.ExtrasConfig',
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -59,6 +63,8 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+SITE_ID = 1
+
 ROOT_URLCONF = 'lah.urls'
 
 TEMPLATES = [
@@ -72,13 +78,17 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                #'comics.ccr.site',
                 'comics.ccr.site',
                 "django.core.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.core.context_processors.media",
                 "django.core.context_processors.static",
             ],
+            # got this from python anti-pattern - take out if it doesn't work
+            #'loaders': [
+            #    'django.template.loaders.filesystem.Loader',
+            #    'django.template.loaders.app_directories.Loader',
+            #],       
         },
     },
 ]
@@ -123,7 +133,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC-5'
+#TIME_ZONE = 'UTC-5'
+TIME_ZONE = "US/Eastern"
 
 USE_I18N = True
 

@@ -29,8 +29,10 @@ urlpatterns = [
     url(r'^cast/', include('cast.urls')),
     url(r'^about/', include('about.urls')),
     url(r'^archive/', include('archive.urls')),
+    url(r'^extras/', include('extras.urls', namespace="photologue")),
     url(r'^admin/', admin.site.urls),
     url(r'^rss/', RecentUpdates() ),
+    url(r'^extras/', include('photologue.urls', namespace='photologue')),
     url(r'', include('comics.urls')),
     #url(r'^lifesahowl/', include('twython_django_oauth.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

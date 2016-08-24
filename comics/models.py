@@ -214,7 +214,7 @@ class GuestComic(models.Model):
   
     type = models.CharField(max_length=10, choices=[('guest', 'Guest comic'), ('special', 'Special item'), ('art', 'Filler art'), ('ad', 'Advertisement'), ] )
     author = models.CharField(max_length=100, blank=True)
-    url = models.CharField(max_length=200, blank=True)
+    url = models.URLField(max_length=200, blank=True)
     ref_comic = models.OneToOneField(Comic, related_name='gcomic', on_delete=models.CASCADE)
     
     

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% load extras_tags %}
+
+{% load staticfiles %}
+
+
+{% block metadata %}
+		<link rel="canonical" href="http://www.lifesahowl.com/" />
+		<meta name="description" content="Site info, author info, tech details, and other assorted information for Life's a Howl" />
+		
+		<meta property="og:title" content="Life's a Howl - Info page" />
+		<meta property="og:type" content="website" />
+		<meta property="og:image" content="{% static 'comics/favicon/favicon-180.png' %}" />
+		<meta property="og:url" content="http://www.lifesahowl.com/" />
+		<meta property="og:description" content="Site info, author info, tech details, and other assorted information for Life's a Howl" />
+		<meta property="og:locale" content="language_en_US" />
+		
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:url" content="http://www.lifesahowl.com/" />
+		<meta name="twitter:title" content="Life's a Howl - Info page" />
+		<meta name="twitter:description" content="Site info, author info, tech details, and other assorted information for Life's a Howl" />
+		<meta name="twitter:image" content="{% static 'comics/favicon/favicon-180.png' %}" />
+		<meta name="twitter:site" content="@lifesahowl" />
+{% endblock metadata %}
+
+{% block title %}
+Life's a Howl - Extras - Fanart submission
+{% endblock title %}
+
+{% block content %}
+
+	<div class="leftside">
+		<div class="textbox">
+
+			{% if fanpiece %}
+			<h2>Fanart submission</h2>
+				<h3>{{ fanpiece.title }}</h3>
+			    <a href="{{ fanpiece.image.url }}"><img src="{{ fanpiece.get_display_url }}" class="fanart" alt="{{ fanpiece.title }}" /></a>
+			    <p>{{ fanpiece.caption }}</p>
+			    <p>Submitted by <a href="{{ attrib.url }}">{{ attrib.author }}</a></p>
+			    <!-- let's put the gallery links here -->
+			    
+			    {% if fanpiece.public_galleries %}
+			    	<h3>Check out some more fanart!</h3>
+				    {% for gallery in fanpiece.public_galleries %}
+	                	<p>{% previous_in_gallery object gallery %}<a href="{% url 'extras:fanart' %}">{{ gallery.title }}</a>{% next_in_gallery object gallery %}</p>
+					{% endfor %}
+				{% endif %}
+			{% endif %}
+
+		</div>
+	</div>
+		{% include "right_column.html" %}
+{% endblock content %}

@@ -34,6 +34,7 @@ body {
 }
 
 #img_container {
+	display: block;
 	max-width: 1900px;
 	background-image: url("/static/comics/images/nick_bg.png");
 	background-repeat: no-repeat;
@@ -409,6 +410,16 @@ footer ul li {
 	overflow: hidden;
 }
 
+/* image gallery stuff */
+img.thumbnail {
+	border: 2px black solid;
+	margin: 0 5px;
+}
+
+img.fanart {
+	border: 2px black solid;
+}
+
 /* share buttons */
 .sharebox {
 	position: relative;
@@ -645,6 +656,9 @@ hr {
 	.banner {
 		width: 468px;
 		height: 60px;
+	}
+	#img_container {
+		background-image: none;
 	}
   
 }

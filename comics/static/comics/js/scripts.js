@@ -9,24 +9,23 @@ $(function() {
 	$(document).keydown(function(e){
 		if(e.keyCode === konami_keys[konami_index++]){
 			if(konami_index === konami_keys.length){
-				if ( $("#hide").text() == "wolf" ) {
-					$("#img_container").css({
-						"background-image" : 'url("/static/comics/images/nick_bg.png")',
-						"background-repeat" : "no-repeat",
-						"background-position" : "0px 120px"
-						
-					});
-					$("#hide").text("nick");
-					
-				} else {
-					$("#img_container").css({
-						"background-image" : 'url("/static/comics/images/nick_bg_wolf.png")',
-						"background-repeat" : "no-repeat",
-						"background-position" : "0px 120px"
-					});
-					$("#hide").text("wolf");
+				if ( $(window).width() > 768) {
+					if ( $("#hide").text() == "wolf" ) {
+						$("#img_container").css({
+							"background-image" : 'url("/static/comics/images/nick_bg.png")',
+							"background-repeat" : "no-repeat",
+							"background-position" : "0px 137px"
+						});
+						$("#hide").text("nick");
+					} else {
+						$("#img_container").css({
+							"background-image" : 'url("/static/comics/images/nick_bg_wolf.png")',
+							"background-repeat" : "no-repeat",
+							"background-position" : "0px 137px"
+						});
+						$("#hide").text("wolf");
+					}
 				}
-			
 				konami_index = 0;
 			}
 		}else{

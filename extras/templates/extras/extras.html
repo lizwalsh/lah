@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% load extras_tags %}
+
+{% load staticfiles %}
+
+
+{% block metadata %}
+		<link rel="canonical" href="http://www.lifesahowl.com/" />
+		<meta name="description" content="Site info, author info, tech details, and other assorted information for Life's a Howl" />
+		
+		<meta property="og:title" content="Life's a Howl - Info page" />
+		<meta property="og:type" content="website" />
+		<meta property="og:image" content="{% static 'comics/favicon/favicon-180.png' %}" />
+		<meta property="og:url" content="http://www.lifesahowl.com/" />
+		<meta property="og:description" content="Site info, author info, tech details, and other assorted information for Life's a Howl" />
+		<meta property="og:locale" content="language_en_US" />
+		
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:url" content="http://www.lifesahowl.com/" />
+		<meta name="twitter:title" content="Life's a Howl - Info page" />
+		<meta name="twitter:description" content="Site info, author info, tech details, and other assorted information for Life's a Howl" />
+		<meta name="twitter:image" content="{% static 'comics/favicon/favicon-180.png' %}" />
+		<meta name="twitter:site" content="@lifesahowl" />
+{% endblock metadata %}
+
+{% block title %}
+Life's a Howl - Extras
+{% endblock title %}
+
+{% block content %}
+
+	<div class="leftside">
+		<div class="textbox">
+			{% if extras %}
+			<h2>Extras</h2>
+			{% elif fangallery %}
+			<h2>Fanart Gallery</h2>
+			{% endif %}
+			
+			{% if fanart %}
+				<h3>{{ fanart.title }}</h3>
+				<!-- now we can put some stuff in here -->
+				{% for photo in fanart.public %}
+	                <a href="{{ photo.get_absolute_url }}"><img src="{{ photo.get_thumbnail_url }}" class="thumbnail" alt="{{ photo.title }}"></a>
+	            {% endfor %}
+			{% endif %}
+			
+			
+			{% if media %}
+				<h3>Media Coverage</h3>
+				<ul>
+					{% for item in media %}
+					<li><a href="{{ item.url }}">{{ item.title }}</a> - {{ item.desc }}</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+			
+			{% if mycontrib %}
+				<h3>My contributions</h3>
+				<ul>
+					{% for item in mycontrib %}
+					<li><a href="{{ item.url }}">{{ item.title }}</a> - {{ item.desc }}</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+			
+			{% if interesting %}
+				<h3>Interesting things</h3>
+				<ul>
+					{% for item in interesting %}
+					<li><a href="{{ item.url }}">{{ item.title }}</a> - {{ item.desc }}</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+			
+			{% if fanworks %}
+				<h3>Fanworks</h3>
+				<ul>
+					{% for item in fanworks %}
+					<li><a href="{{ item.url }}">{{ item.title }}</a> - {{ item.desc }}</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+
+			{% if fanpiece %}
+			<h2>Fanart submission</h2>
+				<h3>{{ fanpiece.title }}</h3>
+			    <a href="{{ fanpiece.image.url }}"><img src="{{ fanpiece.get_display_url }}" class="fanart" alt="{{ fanpiece.title }}" /></a>
+			    <p>{{ fanpiece.caption }}</p>
+			    <p>Submitted by <a href="{{ attrib.url }}">{{ attrib.author }}</a></p>
+			    <!-- let's put the gallery links here -->
+			    
+			    {% if fanpiece.public_galleries %}
+			    	<h3>Check out some more fanart!</h3>
+				    {% for gallery in fanpiece.public_galleries %}
+	                	<p>{% previous_in_gallery object gallery %}<a href="{% url 'extras:fanart' %}">{{ gallery.title }}</a>{% next_in_gallery object gallery %}</p>
+					{% endfor %}
+				{% endif %}
+			{% endif %}
+
+		</div>
+	</div>
+		{% include "right_column.html" %}
+{% endblock content %}

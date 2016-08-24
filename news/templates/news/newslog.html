@@ -38,6 +38,7 @@ Life's a Howl - News page
 				{{stuff.news|safe}}
 				</div>
 				<p>Traceback: <a href="{% url 'news:page' stuff.id stuff.slug %}">booyah</a> </p>
+				<hr />
 			</article>
 		{% endfor %}
 		{% if page_obj.has_previous %}
