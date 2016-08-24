@@ -51,7 +51,7 @@ Life's a Howl - Extras
 				<h3>Media Coverage</h3>
 				<ul>
 					{% for item in media %}
-					<li><a href="{{ item.url }}">{{ item.title }}</a> - {{ item.desc }}</li>
+					<li class="invis"><a href="{{ item.url }}">{{ item.title }}</a> - {{ item.desc }}</li>
 					{% endfor %}
 				</ul>
 			{% endif %}
@@ -60,7 +60,7 @@ Life's a Howl - Extras
 				<h3>My contributions</h3>
 				<ul>
 					{% for item in mycontrib %}
-					<li><a href="{{ item.url }}">{{ item.title }}</a> - {{ item.desc }}</li>
+					<li class="invis"><a href="{{ item.url }}">{{ item.title }}</a> - {{ item.desc }}</li>
 					{% endfor %}
 				</ul>
 			{% endif %}
@@ -69,7 +69,7 @@ Life's a Howl - Extras
 				<h3>Interesting things</h3>
 				<ul>
 					{% for item in interesting %}
-					<li><a href="{{ item.url }}">{{ item.title }}</a> - {{ item.desc }}</li>
+					<li class="invis"><a href="{{ item.url }}">{{ item.title }}</a> - {{ item.desc }}</li>
 					{% endfor %}
 				</ul>
 			{% endif %}
@@ -78,7 +78,7 @@ Life's a Howl - Extras
 				<h3>Fanworks</h3>
 				<ul>
 					{% for item in fanworks %}
-					<li><a href="{{ item.url }}">{{ item.title }}</a> - {{ item.desc }}</li>
+					<li class="invis"><a href="{{ item.url }}">{{ item.title }}</a> - {{ item.desc }}</li>
 					{% endfor %}
 				</ul>
 			{% endif %}

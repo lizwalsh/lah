@@ -37,7 +37,7 @@ Life's a Howl - Extras - Fanworks
 				<h2>Fanworks</h2>
 				<ul>
 					{% for item in fanworks %}
-					<li><a href="{{ item.url }}">{{ item.title }}</a> - {{ item.desc }}</li>
+					<li class="invis"><a href="{{ item.url }}">{{ item.title }}</a> - {{ item.desc }}</li>
 					{% endfor %}
 				</ul>
 			{% endif %}

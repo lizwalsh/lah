@@ -410,6 +410,11 @@ footer ul li {
 	overflow: hidden;
 }
 
+/* extras bullets */
+li.invis {
+	list-style-type: none;
+}
+
 /* image gallery stuff */
 img.thumbnail {
 	border: 2px black solid;
