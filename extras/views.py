@@ -26,15 +26,16 @@ class IndexView(generic.ListView):
 
 class FanartView(generic.ListView):
     model = Gallery
-    template_name = 'extras/extras_gallery.html'
+    template_name = 'extras/extras_fanworks.html'
     queryset = Gallery.objects.on_site().is_public()
     context_object_name = 'fangallery'
     
     def get_context_data(self, **kwargs):
         context = super(generic.ListView, self).get_context_data(**kwargs)
         context["fanart"] = Gallery.objects.get(title="Fanart")
+        context["fanworks"] = InfoType.objects.filter(type="fanworks")
         return context
-
+    
 class DownloadView(generic.ListView):
     model = Gallery
     template_name = "extras/extras.html"
@@ -56,12 +57,6 @@ class InterestView(generic.ListView):
     template_name = 'extras/extras_interesting.html'
     queryset = InfoType.objects.filter(type='interesting')
     context_object_name='interesting'
-
-class FanworksView(generic.ListView):
-    model = InfoType
-    template_name = 'extras/extras_fanworks.html'
-    queryset = InfoType.objects.filter(type='fanworks')
-    context_object_name='fanworks'
     
 class MediaView(generic.ListView):
     model = InfoType

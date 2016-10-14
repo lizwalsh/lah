@@ -30,16 +30,18 @@ Life's a Howl - About...
 
 	<div class="leftside">
 		<div class="textbox">
-			<h2>About...</h2>
-			{% for item in about_page %}
-			<div>
-				<h3>{{ item.title }}</h3>
-				{{ item.body|safe }}
-			</div>
-			<div class="clear"></div>
-			<hr />
-			
-			{% endfor %}
+			<h2 class="title">About...</h2>
+			{% if about_page %}
+				{% for item in about_page %}
+				<div>
+					<h3>{{ item.title }}</h3>
+					{{ item.body|safe }}
+				</div>
+				<div class="clear"></div>
+				<hr />
+				
+				{% endfor %}
+			{% endif %}
 		</div>
 	</div>
 		{% include "right_column.html" %}

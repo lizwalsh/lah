@@ -31,11 +31,14 @@ Life's a Howl - News page
 	<div class="leftside">
 		<div class="textbox">
 			<article>
-				<h2>{{news.title}}</h2>
-				<p class="byline">{{news.date}}</p>
-				<div class="news_body">
-				{{news.news|safe}}
-				</div>
+				{% if news %}
+					<h2>{{news.title}}</h2>
+					<p class="byline">{{news.date}}</p>
+					<div class="news_body">
+					{{news.news|safe}}
+					</div>
+				{% else %}
+				{% endif %}
 			</article>
 		</div>
 		

@@ -12,6 +12,5 @@ urlpatterns = [
     url(r'^info/$', views.InterestView.as_view(), name="interesting"),
     url(r'^contributions/$', views.ContribView.as_view(), name="mycontrib"),
     url(r'^media/$', views.MediaView.as_view(), name="media"),
-    url(r'^fanworks/$', views.FanworksView.as_view(), name="fanworks"),
     # 
 ]

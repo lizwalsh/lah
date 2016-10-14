@@ -30,26 +30,30 @@ Life's a Howl - Archive
 
 	<div class="leftside">
 		<div class="textbox">
-			<h2>Archive</h2>
+			<h2 class="title">Archive</h2>
 			<p><a href="{% url 'archive:cally' %}">Switch to calendar view</a></p>
-			{% for item in arc %}
-				{% if item.booknum == 0 %}
-				<h3>{{ item.title }}</h3>
-				{% else %}
-				<h3>Book {{ item.booknum }} - {{item.title}}</h3>
-				{% endif %}
-					<ul>
-						{% for comic in item.get_comics %}
-						<li>({{comic.date|date:"c"}}) <a href="{% url 'comics:page' comic.id comic.slug %}">
-							{% if comic.cid == 0 %}
-								{{ comic.gcomic.get_type_display }} by {{ comic.gcomic.author }}
-							{% else %}
-								#{{ comic.cid }}
-							{% endif %}
-							 - {{ comic.title }}</a> </li>
-						{% endfor %}
-					</ul>
-			{% endfor %}
+			{% if arc %}
+				{% for item in arc %}
+					{% if item.booknum == 0 %}
+					<h3>{{ item.title }}</h3>
+					{% else %}
+					<h3>Book {{ item.booknum }} - {{item.title}}</h3>
+					{% endif %}
+						<ul>
+							{% for comic in item.get_comics %}
+							<li>({{comic.date|date:"c"}}) <a href="{% url 'comics:page' comic.id comic.slug %}">
+								{% if comic.cid == 0 %}
+									{{ comic.gcomic.get_type_display }} by {{ comic.gcomic.author }}
+								{% else %}
+									#{{ comic.cid }}
+								{% endif %}
+								 - {{ comic.title }}</a> </li>
+							{% endfor %}
+						</ul>
+				{% endfor %}
+			{% else %}
+				
+			{% endif %}
 		</div>
 	</div>
 		{% include "right_column.html" %}
