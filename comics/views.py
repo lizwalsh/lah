@@ -36,9 +36,9 @@ class IndexView(generic.ListView):
         return context
     
     def get_queryset(self):
-        comic = Comic.objects.filter(published=True).order_by('-date')
+        comic = Comic.objects.filter(published=True)
         if comic.exists():
-            return comic[0]
+            return comic.order_by('-date')[0]
         else:
             return None
 
