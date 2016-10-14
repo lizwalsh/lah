@@ -79,10 +79,10 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'comics.ccr.site',
-                "django.core.context_processors.request",
+                "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
-                "django.core.context_processors.media",
-                "django.core.context_processors.static",
+                "django.template.context_processors.media",
+                "django.template.context_processors.static",
             ],
             # got this from python anti-pattern - take out if it doesn't work
             #'loaders': [
