@@ -36,13 +36,12 @@ class IndexView(generic.ListView):
         return context
     
     def get_queryset(self):
-        try:
-            comic = Comic.objects.filter(published=True).order_by('-date')[0]
-        except Comic.DoesNotExist:
-            comic = None
-        except IndexError:
-            comic = None
-        return comic
+        comic = Comic.objects.filter(published=True).order_by('-date')
+        if comic:
+            return comic[0]
+        else:
+            return None
+
 
 class PageView(generic.DetailView):
     model = Comic
