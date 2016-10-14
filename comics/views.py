@@ -40,7 +40,7 @@ class IndexView(generic.ListView):
             comic = Comic.objects.filter(published=True).order_by('-date')[0]
         except Comic.DoesNotExist:
             comic = None
-        except Comic.IndexError:
+        except IndexError:
             comic = None
         return comic
 
