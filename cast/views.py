@@ -10,7 +10,7 @@ from .models import Intro, CastEntry
 
 class IndexView(generic.ListView):
     context_object_name = 'cast_page'
-    #model = CastEntry
+    model = CastEntry
     template_name = 'cast/cast.html'
     
     def get_queryset(self):
@@ -19,7 +19,7 @@ class IndexView(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         try:
-            context["intro"] = Intro.objects.all()[0]
+            context["intro"] = Intro.objects.all().first()
         except Intro.DoesNotExist:
             context["intro"] = None
         return context
