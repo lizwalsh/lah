@@ -25,7 +25,7 @@ class IndexView(generic.ListView):
         # if we don't have a published book yet, just use the current pages
         if not books:
             clist = Comic.objects.filter(published=True).order_by('date')
-            book = Archive(title="Current pages here I go", booknum=0, start_id=clist.earliest(), published=True )
+            book = Archive(title="", booknum=0, start_id=clist.earliest(), published=True )
             books = []
             books.append(book)
         return books
