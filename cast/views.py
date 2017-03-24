@@ -18,10 +18,10 @@ class IndexView(generic.ListView):
     
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
-        if Intro.objects.all().length > 0:
+        try:
             context["intro"] = Intro.objects.all()[0]
-        else:
-            context["intro"] = ""
+        except Intro.DoesNotExist:
+            context["intro"] = None
         return context
 
     
