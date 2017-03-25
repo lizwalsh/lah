@@ -16,7 +16,10 @@ class IndexView(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         
-        context["fanart"] = Gallery.objects.get(title="Fanart")
+        try:
+            context["fanart"] = Gallery.objects.get(title="Fanart")
+        except Gallery.DoesNotExist:
+            context["fanart"] = None
         context["media"] = InfoType.objects.filter(type='media')
         context["interesting"] = InfoType.objects.filter(type='interesting')
         context["mycontrib"] = InfoType.objects.filter(type='mycontrib')
