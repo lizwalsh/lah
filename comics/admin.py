@@ -8,10 +8,11 @@ def publish(comicadmin, request, queryset):
     for item in queryset:
         if item.published == False:
             result = item.publish()
-            if result == True:
-                messages.success(request, "Comic " + str(item.id) + " successfully published")
-            else:
-                messages.error(request, "You cannot publish comic " + str(item.id) + " because you haven't uploaded a comic for it yet.")
+            messages.success(request, result)
+            #if result == True:
+            #    messages.success(request, "Comic " + str(item.id) + " successfully published")
+            #else:
+            #    messages.error(request, "You cannot publish comic " + str(item.id) + " because you haven't uploaded a comic for it yet.")
         else:
             messages.info(request, "Comic " + str(item.id) + " already published")
 

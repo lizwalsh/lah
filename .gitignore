@@ -3,8 +3,10 @@ __pycache__
 myvenv
 db.sqlite3
 /static
+/common
 .DS_Store
 settings_keys.py
+settings_db.py
 /media
 /test_uploads
 p1.jpg

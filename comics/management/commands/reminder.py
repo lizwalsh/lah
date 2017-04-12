@@ -6,19 +6,19 @@ from django.conf import settings
 from twython import Twython, TwythonError
 
 class Command(BaseCommand):
-    help = "Tweets reminders that a comic has updated today."
+    help = "Publishes the next available comic (on today's date)"
     
     def add_arguments(self, parser):
-        #parser.add_argument('date', nargs='?', default=datetime.today())
-        parser.add_argument('time_of_day')
+        parser.add_argument('date', nargs='?', default=datetime.today())
         
     def handle(self, *args, **options):
-        #thedate = options['date']
-        thedate = datetime.today()
+        thedate = options['date']
         try:
             comic = Comic.objects.get(date=thedate)
         except Comic.DoesNotExist:
             raise CommandError('Comic for %s does not exist' % str(day))
             
         # commented out all the old stuff
-        comic.tweet_comic_reminder(options['time_of_day'])
+        result = comic.publish()
+        if result == True:
+            comic.tweet_comic()

@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'lifesahowl.com', 'www.lifesahowl.com',]
 
 
 # Application definition
@@ -105,6 +105,14 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+    #'default': {
+    #    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #    'NAME': 'lah_data',
+    #    'USER': 'lifesahowl',
+    #    'PASSWORD': 'all my stuff hooray!!1',
+    #    'HOST': 'localhost',
+    #    'PORT': '',
+    #}
 }
 
 
@@ -145,9 +153,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-#STATIC_ROOT = '/home/litazia/lah/static/'
-STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'common')
+#STATIC_URL = '/static/'
+STATIC_URL = '/common/'
 STATICFILES_DIRS = (
     #os.path.join(BASE_DIR, 'static')
 )
@@ -160,7 +168,6 @@ STATICFILES_FINDERS = (
 
 # Media files (uploads)
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-#MEDIA_ROOT = '/home/litazia/lah/media/'
 MEDIA_URL = '/media/'
 
 # define some variables for myself

@@ -108,7 +108,6 @@ class Comic(models.Model):
             for one in pages:
                 if one.upload:
                     # copy some love
-    
                     pub_file = ComicFile()
                     pub_file.comic = one.comic
                     pub_file.alt_text = one.alt_text
@@ -142,7 +141,7 @@ class Comic(models.Model):
         twitter = Twython(settings.APP_KEY, settings.APP_SECRET, settings.OAUTH_TOKEN, settings.OAUTH_TOKEN_SECRET)
         
         try:
-            twitter.update_status(status='New comic for ' + date + '! http://lifesahowl.com')
+            twitter.update_status(status='New comic for ' + str(date) + '! https://lifesahowl.com')
         except TwythonError as e:
             print(e)
             
@@ -173,6 +172,27 @@ class Comic(models.Model):
         except TwythonError as e:
             print(e)
         """
+    def tweet_comic_reminder(self, tod):
+        date = self.date
+        
+        # now tweet this mofo
+        twitter = Twython(settings.APP_KEY, settings.APP_SECRET, settings.OAUTH_TOKEN, settings.OAUTH_TOKEN_SECRET)
+        
+        
+        # let's get some reminders
+        
+        if tod == "morning":
+            status = "Good morning! New comic for " + str(date) + "! https://lifesahowl.com"
+        else if tod == "afternoon":
+            status = "Afternoon reminder! New comic for " + str(date) + "! https://lifesahowl.com"
+        else if tod == "evening":
+            status = "Evening reminder! New comic for " + str(date) + "! https://lifesahowl.com"
+        try:
+            twitter.update_status(status=status)
+        except TwythonError as e:
+            print(e)
+                
+
                 
     class Meta:
         ordering = ('-date',)
@@ -204,6 +224,8 @@ class UploadedComicFile(models.Model):
         return "Uploaded comic file " + str(self.id) + " for comic #" + str(self.comic)
     
     def delete(self, *args, **kwargs):
+        if os.path.isfile(self.upload_file.path):
+            os.remove(self.upload_file.path)
         self.upload.delete()
         super(UploadedComicFile, self).delete(*args, **kwargs)
         
