@@ -8,7 +8,7 @@
 		
 		<meta property="og:title" content="Life's a Howl - Info page" />
 		<meta property="og:type" content="website" />
-		<meta property="og:image" content="{% static 'comics/favicon/favicon-180.png' %}" />
+		<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'comics/favicon/favicon-180.png' %}" />
 		<meta property="og:url" content="http://www.lifesahowl.com/" />
 		<meta property="og:description" content="Site info, author info, tech details, and other assorted information for Life's a Howl" />
 		<meta property="og:locale" content="language_en_US" />
@@ -17,7 +17,7 @@
 		<meta name="twitter:url" content="http://www.lifesahowl.com/" />
 		<meta name="twitter:title" content="Life's a Howl - Info page" />
 		<meta name="twitter:description" content="Site info, author info, tech details, and other assorted information for Life's a Howl" />
-		<meta name="twitter:image" content="{% static 'comics/favicon/favicon-180.png' %}" />
+		<meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'comics/favicon/favicon-180.png' %}" />
 		<meta name="twitter:site" content="@lifesahowl" />
 
 {% endblock metadata %}

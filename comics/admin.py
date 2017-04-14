@@ -43,7 +43,7 @@ class GuestComicInline(admin.TabularInline):
     extra = 1
 
 class ComicAdmin(admin.ModelAdmin):
-    list_display=['id', 'title', 'date', 'cid', 'published',]
+    list_display=['title', 'id', 'date', 'cid', 'published',]
     ordering=['-date', 'published', 'id']
     actions=[publish, unpublish, renumber]
     inlines = (UploadedComicFileInline, ComicFileInline, GuestComicInline )

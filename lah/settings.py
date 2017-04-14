@@ -16,6 +16,7 @@ import os
 import os.path
 
 from lah.settings_keys import *
+from lah.settings_db import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -97,24 +98,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'lah.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/1.9/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-    #'default': {
-    #    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #    'NAME': 'lah_data',
-    #    'USER': 'lifesahowl',
-    #    'PASSWORD': 'all my stuff hooray!!1',
-    #    'HOST': 'localhost',
-    #    'PORT': '',
-    #}
-}
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -171,7 +154,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 # define some variables for myself
-SITE_URL = 'http://www.lifesahowl.com/'
+SITE_URL = 'https://www.lifesahowl.com/'
 
 
 # comics folder

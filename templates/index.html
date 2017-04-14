@@ -7,18 +7,18 @@
 		<link rel="canonical" href="http://www.lifesahowl.com/" />
 		<meta name="description" content="An epic urban fantasy webcomic about life, love and lycanthropy." />
 		
-		<meta property="og:title" content="Life's a Howl - a werewolf comic by Liz Walsh" />
-		<meta property="og:type" content="website" />
-		<meta property="og:image" content="{% static 'comics/images/lah_logo_size.jpg' %}" />
-		<meta property="og:url" content="http://www.lifesahowl.com/" />
-		<meta property="og:description" content="An epic urban fantasy webcomic about life, love and lycanthropy." />
-		<meta property="og:locale" content="language_en_US" />
+		<meta name="og:title" content="Life's a Howl - a werewolf comic by Liz Walsh" />
+		<meta name="og:type" content="website" />
+		<meta name="og:image" content="{{request.scheme}}://{{request.get_host}}{% static 'comics/favicon/favicon-180.png' %}" />
+		<meta name="og:url" content="http://www.lifesahowl.com/" />
+		<meta name="og:description" content="An epic urban fantasy webcomic about life, love and lycanthropy." />
+		<meta name="og:locale" content="language_en_US" />
 		
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:url" content="http://www.lifesahowl.com/" />
 		<meta name="twitter:title" content="Life's a Howl - a werewolf comic by Liz Walsh" />
 		<meta name="twitter:description" content="An epic urban fantasy webcomic about life, love and lycanthropy." />
-		<meta name="twitter:image" content="{% static 'comics/images/lah_logo_size.jpg' %}" />
+		<meta name="twitter:image" content="{{request.scheme}}://{{request.get_host}}{% static 'comics/favicon/favicon-180.png' %}" />
 		<meta name="twitter:site" content="@lifesahowl" />
 
 {% endblock metadata %}

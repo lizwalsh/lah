@@ -1,0 +1,13 @@
+# Database
+# https://docs.djangoproject.com/en/1.9/ref/settings/#databases
+
+# this file holds your database requirements
+# I've got the SQLite backend here, but this is where you would store your DB config information
+# (e.g. PostgreSQL connection info)
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
