@@ -16,7 +16,7 @@ class ComicFeed(Rss201rev2Feed):
         super(ComicFeed,self).add_root_elements(handler)
         handler.addQuickElement(u"copyright", "Copyright 2016 Liz Walsh")
         handler.startElement(u"image", {})
-        handler.addQuickElement(u"url", "/static/comics/images/plain_logo.png")
+        handler.addQuickElement(u"url", "/common/comics/images/plain_logo.png")
         handler.addQuickElement(u"title", "Life's a Howl")
         handler.addQuickElement(u"link", "http://www.lifesahowl.com")
         handler.endElement(u"image")
@@ -30,7 +30,7 @@ class ComicFeed(Rss201rev2Feed):
 class RecentUpdates(Feed):
     feed_type = ComicFeed
     title = "Life's a Howl"
-    link = "http://www.lifesahowl.com/"
+    link = "https://lifesahowl.com/"
     description = "Werewolf webcomic - Epic urban fantasy about life, love and lycanthropy"
     feed_url = "/rss/"
     
@@ -64,5 +64,5 @@ class RecentUpdates(Feed):
         obj = item.comicfile_set.all()
         images = ""
         for thing in obj:
-            images += '<img src="%s" width="%s" height="%s" />' % ("http://127.0.0.1:8000" + thing.page.url, thing.page.width, thing.page.height)
+            images += '<img src="%s" width="%s" height="%s" />' % ("https://lifesahowl.com" + thing.page.url, thing.page.width, thing.page.height)
         return images
