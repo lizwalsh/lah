@@ -13,7 +13,7 @@ class IndexView(generic.ListView):
     template_name = 'about/about.html'
     
     def get_queryset(self):
-        return AboutItem.objects.all()
+        return AboutItem.objects.all().order_by('id')
     
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)

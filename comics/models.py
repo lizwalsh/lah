@@ -183,10 +183,12 @@ class Comic(models.Model):
         
         if tod == "morning":
             status = "Good morning! New comic for " + str(date) + "! https://lifesahowl.com"
-        else if tod == "afternoon":
+        elif tod == "afternoon":
             status = "Afternoon reminder! New comic for " + str(date) + "! https://lifesahowl.com"
-        else if tod == "evening":
+        elif tod == "evening":
             status = "Evening reminder! New comic for " + str(date) + "! https://lifesahowl.com"
+        elif tod == "reminder":
+            status = "Reminder that there's a new comic today! https://lifesahowl.com"
         try:
             twitter.update_status(status=status)
         except TwythonError as e:
