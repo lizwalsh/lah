@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% load staticfiles %}
+{% load static %}
 {% load comic_tags %}
 
 {% block metadata %}
@@ -9,7 +9,12 @@
 		
 		<meta property="og:title" content="Life's a Howl - {{comic.date}} - #{{comic.cid}} - {{comic.title}}" />
 		<meta property="og:type" content="website" />
-		<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'comics/favicon/favicon-180.png' %}" />
+		{% if comic %}
+			{% with comic.comicfile_set.all|first as image %}
+		<meta name="og:image" content="https://{{request.get_host}}{{ MEDIA_URL }}{{ image.page.name }}" />
+			{% endwith %}
+		{% endif %}
+		<meta property="og:image" content="https://{{ request.get_host }}{% static 'comics/favicon/favicon-180.png' %}" />
 		<meta property="og:url" content="{{ request.build_absolute_uri }}" />
 		<meta property="og:description" content="Update for {{comic.date}} - Comic #{{comic.cid}} - {{comic.title}}" />
 		<meta property="og:locale" content="language_en_US" />

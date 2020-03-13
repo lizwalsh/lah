@@ -9,7 +9,7 @@ from django.utils.html import conditional_escape as esc
 from comics.models import Comic, GuestComic
 
 class Archive(models.Model):
-    start_id = models.ForeignKey(Comic, related_name='Starting comic+')
+    start_id = models.ForeignKey(Comic, related_name='Starting comic+', on_delete=models.CASCADE)
     booknum = models.IntegerField('Book number', default=1)
     title = models.CharField(max_length=200)
     published = models.BooleanField('is published?', default=False)

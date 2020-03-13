@@ -5,7 +5,7 @@ from django.utils import formats
 from django.utils.timezone import now
     
 class Fanart(models.Model):
-    photo = models.OneToOneField(Photo, related_name='fanpiece')
+    photo = models.OneToOneField(Photo, related_name='fanpiece', on_delete=models.CASCADE)
     author = models.CharField(max_length=100, blank=True)
     url = models.URLField(max_length=200, blank=True)
     date_added = models.DateTimeField(default=now)

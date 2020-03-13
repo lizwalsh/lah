@@ -46,7 +46,7 @@ class RecentUpdates(Feed):
         return "Comic update for " + str(item.date)
         
     def item_link(self, item):
-        return "/" + str(item.id) + "/" + item.slug
+        return "https://lifesahowl.com/" + str(item.id) + "/" + item.slug
     
     """
     def item_enclosures(self, item):

@@ -7,3 +7,7 @@ APP_SECRET = 'your_secret_twitter_app_key_here'
 
 OAUTH_TOKEN = 'your_oauth_token_for_twitter_here'
 OAUTH_TOKEN_SECRET = 'your_secret_oauth_token_for_twitter_here'
+
+# facebook keys
+PAGE_ID = 'your_page_id_here'
+ACCESS_TOKEN = 'your_access_token_here'

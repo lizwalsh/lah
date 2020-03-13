@@ -32,7 +32,7 @@ class GetLatestNode(template.Node):
         return self.comic.get_latest()
     
 
-@register.assignment_tag
+@register.simple_tag
 def get_latest(comic):
     return GetLatestNode(comic)
     #return {'get_latest': get_latest }

@@ -16,6 +16,15 @@ def publish(comicadmin, request, queryset):
         else:
             messages.info(request, "Comic " + str(item.id) + " already published")
 
+def publish_socialmedia(comicadmin, request, queryset):
+    for item in queryset:
+        if item.published == False:
+            result = item.publish()
+            item.tweet_comic()
+            item.facebook_comic()
+            messages.success(request, result)
+        else:
+            messages.info(request, "Comic " + str(item.id) + " already published")
             
 
 def unpublish(comicadmin, request, queryset):
@@ -27,8 +36,10 @@ def renumber(comicadmin, request, queryset):
     
    
 publish.short_description = "Publish comics"
+publish_socialmedia.short_description = "Publish comic, and make social media posts"
 unpublish.short_description = "Unpublish comics"
 renumber.short_description = "Renumber comics"
+
 
 class ComicFileInline(admin.TabularInline):
     model = ComicFile

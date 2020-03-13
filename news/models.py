@@ -11,6 +11,7 @@ class NewsItem(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, null=True)
     published = models.BooleanField()
+    draft = models.BooleanField(default=True)
     # comment this out if you use ckeditor
     # news = models.TextField()
     # use this if you use ckeditor
@@ -21,3 +22,11 @@ class NewsItem(models.Model):
         
     def __str__(self):
         return "News for " + str(self.date)
+
+    def publish(self):
+        news = self
+        setattr(news, 'published', True)
+        
+    def prep(self):
+        news = self
+        setattr(news, 'draft', False)

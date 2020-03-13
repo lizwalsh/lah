@@ -2,7 +2,7 @@
 
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.views import generic
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import datetime
@@ -43,7 +43,8 @@ class PageView(generic.DetailView):
     model = Comic
     template_name = 'comics/comic_stuff.html'
     
-    def get_queryset(self):
-        return Comic.objects.filter(published=True, date__lte=timezone.now())
+    #def get_queryset(self):
+        #return Comic.objects.filter(published=True, date__lte=timezone.now())
+
     
     

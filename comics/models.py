@@ -1,4 +1,5 @@
 import datetime, os
+import facebook
 
 from django.utils import text, timezone
 from django.db import models
@@ -6,6 +7,7 @@ from django.conf import settings
 from django.template.defaultfilters import slugify
 from django.core.files import File
 from django.core.files.images import ImageFile
+from django.urls import reverse
 from twython import Twython, TwythonError
 
 class Comic(models.Model):
@@ -141,7 +143,7 @@ class Comic(models.Model):
         twitter = Twython(settings.APP_KEY, settings.APP_SECRET, settings.OAUTH_TOKEN, settings.OAUTH_TOKEN_SECRET)
         
         try:
-            twitter.update_status(status='New comic for ' + str(date) + '! https://lifesahowl.com')
+            twitter.update_status(status='New comic for ' + str(date) + '! https://lifesahowl.com/ #webcomics')
         except TwythonError as e:
             print(e)
             
@@ -188,13 +190,38 @@ class Comic(models.Model):
         elif tod == "evening":
             status = "Evening reminder! New comic for " + str(date) + "! https://lifesahowl.com"
         elif tod == "reminder":
-            status = "Reminder that there's a new comic today! https://lifesahowl.com"
+            status = "Reminder that there's a new comic today, " + str(date) + "! https://lifesahowl.com #webcomics"
         try:
             twitter.update_status(status=status)
         except TwythonError as e:
             print(e)
                 
-
+                
+    # now let's set this up as a Facebook post!
+    # code taken from http://nodotcom.org/python-facebook-tutorial.html
+    def facebook_comic(self):
+        date = self.date
+        # cfg page_id, access_token
+        # we supply these in settings
+        graph = facebook.GraphAPI(settings.FB_ACCESS_TOKEN)
+        resp = graph.get_object('me/accounts')
+        page_access_token = None
+        for page in resp['data']:
+            if page['id'] == settings.FB_PAGE_ID:
+                page_access_token = page['access_token']
+        graph = facebook.GraphAPI(page_access_token)
+        
+        # now let's work on the message
+        # we need a comment like Tweeting, but we want to add the current comic page?
+        # how's that work?
+        message = 'New comic for ' + str(date) + '!'
+        comicFile = ComicFile.objects.filter(comic_id = self.id)[0]
+        attachment = {
+            'link': settings.SITE_URL + reverse('comics:page', args=(self.pk, self.slug )),
+            'picture': settings.SITE_URL + settings.MEDIA_URL + comicFile.page.name,
+        }
+        status = graph.put_wall_post(message=message,attachment=attachment)
+        #print(attachment['link'])
                 
     class Meta:
         ordering = ('-date',)
@@ -219,7 +246,8 @@ class ComicFile(models.Model):
 # uploads and published have the same fields, except published files get put in a differenet folder
 class UploadedComicFile(models.Model):
     comic = models.ForeignKey(Comic, on_delete=models.CASCADE)
-    upload = models.ImageField(upload_to=settings.UPLOAD_F + "/", blank=True)
+    # if there are issues, I can make upload blank=True again
+    upload = models.ImageField(upload_to=settings.UPLOAD_F + "/")
     alt_text = models.TextField(null=True)
     
     def __str__(self):

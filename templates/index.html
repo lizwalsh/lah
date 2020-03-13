@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% load staticfiles %}
+{% load static %}
 {% load comic_tags %}
 
 {% block metadata %}
@@ -10,6 +10,11 @@
 		<meta name="og:title" content="Life's a Howl - a werewolf comic by Liz Walsh" />
 		<meta name="og:type" content="website" />
 		<meta name="og:image" content="{{request.scheme}}://{{request.get_host}}{% static 'comics/favicon/favicon-180.png' %}" />
+		{% if comic %}
+			{% with comic.comicfile_set.all|first as image %}
+		<meta name="og:image" content="{{request.scheme}}://{{request.get_host}}{{ MEDIA_URL }}{{ image.page.name }}" />
+			{% endwith %}
+		{% endif %}
 		<meta name="og:url" content="http://www.lifesahowl.com/" />
 		<meta name="og:description" content="An epic urban fantasy webcomic about life, love and lycanthropy." />
 		<meta name="og:locale" content="language_en_US" />
@@ -18,6 +23,7 @@
 		<meta name="twitter:url" content="http://www.lifesahowl.com/" />
 		<meta name="twitter:title" content="Life's a Howl - a werewolf comic by Liz Walsh" />
 		<meta name="twitter:description" content="An epic urban fantasy webcomic about life, love and lycanthropy." />
+		<meta name="twitter:image" content="{{request.scheme}}://{{request.get_host}}{{ MEDIA_URL }}{{ image.page.name }}" />
 		<meta name="twitter:image" content="{{request.scheme}}://{{request.get_host}}{% static 'comics/favicon/favicon-180.png' %}" />
 		<meta name="twitter:site" content="@lifesahowl" />
 

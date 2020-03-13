@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.core import urlresolvers
+from django import urls
 
 from photologue.models import Photo, PhotoEffect, Watermark
 from .models import Fanart, InfoType
